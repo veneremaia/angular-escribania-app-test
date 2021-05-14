@@ -6,10 +6,10 @@ import { Actor } from './Actor';
 import { Escala } from './Escala';
 import { Escribania } from './Escribaniadatos';
 
-const URL_ACTOS = "https://5ff33aff28c3980017b19205.mockapi.io/acto"
-const URL_ACTORES = "https://5ff33aff28c3980017b19205.mockapi.io/actores"
-const URL_DATOS_ESCRIBANIA = "https://5ff33aff28c3980017b19205.mockapi.io/escribaniadatos"
-const URL_ESCALA_PORCENTUAL = "https://5ff33aff28c3980017b19205.mockapi.io/escala_porcentual"
+const URL_ACTOS = "https://609ea701c290190017f103be.mockapi.io/acto"
+const URL_ACTORES = "https://609ea701c290190017f103be.mockapi.io/actores"
+const URL_DATOS_ESCRIBANIA = "https://609ea701c290190017f103be.mockapi.io/escribaniadatos"
+const URL_ESCALA_PORCENTUAL = "https://609ea701c290190017f103be.mockapi.io/escala_porcentual"
 
 
 @Injectable({
