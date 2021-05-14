@@ -1,0 +1,25 @@
+<div class="container">
+    <h3>Configuración de actos</h3>
+<div *ngIf="!this.crear&&!this.editar">
+    <h5> Seleccione una acción</h5>
+
+    <div class="row d-flex justify-content-between" >
+
+
+        <div class=" col-5">
+            <button type="button" class="btn btn-outline-primary col-12"  [routerLink]="['/crearActo']" >Agregar acto</button>
+        </div>
+        <div class=" col-5" >
+            <button type="button" class="btn btn-outline-primary col-12"  [routerLink]="['/editarActos']" >Editar acto</button>
+         </div>
+    </div>
+</div>
+</div>
+
+    
+
+
+
+
+
+

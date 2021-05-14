@@ -1,0 +1,84 @@
+<div *ngIf="datosFinales[0].nombreCliente!=''" class="contenedor-view container">
+  <div class="col-12 d-flex justify-content-end">
+    <button *ngIf="!isPrinted" type="button" (click)="clickModoImprimir()" class="mb-3 col-1 btn btn-outline-secondary btn-lg btn-block"><span class="material-icons">
+      local_printshop
+      </span></button>
+  </div>
+<div class="row d-flex justify-content-between align-items-end ">
+
+  <div class="col-6" *ngFor="let actor of datosActores">
+  <div class="card"  *ngFor="let dato of datosFinales">
+    <h3 class="d-flex justify-content-center">{{actor.nombre_actor}}</h3>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Concepto</th>
+            <th scope="col">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="actor.sellos &&dato.valorSello!=0">
+            <td>Sellos</td>
+            <td>{{dato.valorSello/datosActores.length | number}}</td>
+          </tr>
+          <tr *ngIf="actor.aporte">
+            <td>Aportes</td>
+            <td>{{dato.aportes/datosActores.length | number}}</td>
+          </tr>  <tr *ngIf="actor.certificados">
+            <td>Certificados</td>
+            <td>{{dato.certificado | number}}</td>
+          </tr>  <tr *ngIf="actor.municipal">
+            <td>Municipal</td>
+            <td>{{dato.municipal | number}}</td>
+          </tr>  <tr *ngIf="actor.diligenciamiento">
+            <td>Diligenciamiento</td>
+            <td>{{dato.diligenciamiento | number}}</td>
+          </tr>  <tr *ngIf="actor.rcd">
+            <td>RCD</td>
+            <td>{{dato.rcd | number}}</td>
+          </tr>
+          <tr *ngIf="actor.honorarios">
+            <td>Honorarios</td>
+            <td>{{dato.honorarios | number}}</td>
+          </tr>  <tr *ngIf="actor.iva">
+            <td>IVA</td>
+            <td>{{dato.iva | number}}</td>
+          </tr>  <tr *ngIf="actor.inscripcion">
+            <td>Inscripción</td>
+            <td>{{dato.inscripcion | number}}</td>
+          </tr>  <tr *ngIf="actor.matricula">
+            <td>Matricula</td>
+            <td>{{dato.matricula | number}}</td>
+          </tr>  <tr *ngIf="actor.folios">
+            <td>Folios</td>
+            <td>{{dato.folios | number}}</td>
+          </tr>
+          <tr *ngIf="actor.ganancias &&dato.valorGanancia!=0">
+            <td>Ganancias</td>
+            <td>{{dato.valorGanancia | number}}</td>
+          </tr>
+          <tr *ngIf="actor.iti &&dato.valorIti!=0">
+            <td>Iti</td>
+            <td>{{dato.valorIti | number}}</td>
+          </tr>
+          
+          <tr class="table-success">
+            <td >TOTAL</td>
+            <td >{{actor.total | number}}</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+</div>
+</div>
+    
+
+
+
+</div>
+<div class="row d-flex justify-content-center">
+  <span  id="totalfinal"  *ngIf="datosFinales[0].total!=0"class="badge badge-success col-11 d-flex justify-content-center align-items-center">TOTAL : {{datosFinales[0].total | number}}</span>
+
+</div>
+</div>

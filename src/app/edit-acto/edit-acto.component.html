@@ -1,0 +1,155 @@
+<div class="col-4 mb-4 pl-0 d-flex justify-content-start">
+    <button type="button" id="volver" class="btn pl-0" (click)="reset()" [routerLink]="['/configuracionActos']"><span class="material-icons">
+        keyboard_backspace
+        </span></button>
+      </div>
+<div>
+   
+    <div class="row d-flex justify-content-between">
+        <div class="input-group pl-0 mb-3 col-8">
+            <label class="input-group-text d-flex justify-content-start" for="acto">Acto</label>
+            <select class="form-select" id="acto" (change)="setActo($event.target!)">
+                <option selected disabled>Seleccione el acto</option>
+                <option  *ngFor="let acto of actos" value={{acto.id}} id={{acto.id}}>{{acto.nombre_acto}}</option>
+            
+            </select>
+        </div>
+
+            <div *ngIf="actoActual.id!=0">
+            <button type="button" class="btn btn-outline-danger "> <span class="material-icons">
+                delete
+                </span></button>
+            </div>
+           
+        </div>
+        <div class="row d-flex justify-content-start">
+
+
+        <div *ngIf="actoActual.id!=0">
+            <form [formGroup]="formEdicionActo">
+            <div class="row d-flex justify-content-start">
+                <div class="input-group mb-3 col-4">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Código</span>
+                    <input  formControlName="codigo" type="text"  class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-default" value={{actoActual.codigo_acto}}>
+                </div>  
+            <div class="input-group mb-3 col-4">
+                <span class="input-group-text" id="inputGroup-sizing-default">Sellos</span>
+                <input formControlName="p_sellos" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={{actoActual.p_sellos}}>
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+            <div  class="row d-flex justify-content-start">
+
+                <div class="input-group mb-3 col-4">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Ganancias</span>
+                    <input formControlName="p_ganancias" type="text" class="form-control" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-default" value={{actoActual.p_ganancias}}>
+                    <span class="input-group-text">%</span>
+                </div>
+
+                <div class="input-group mb-3 col-4">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Iti</span>
+                    <input formControlName="p_iti" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={{actoActual.p_iti}}>
+                    <span class="input-group-text">%</span>
+                </div>
+      
+            </div>
+            <div  class="row d-flex justify-content-start">
+
+            <div class="col-12">
+                <p class="mb-0 mt-2">HONORARIOS: </p>
+            </div>
+     
+
+            <div class="form-check form-switch ml-3 col-12">
+                <input class="form-check-input" formControlName="escala_honorarios" [checked]="EPhonorarios" (click)="setHonorarioEscala()" type="checkbox" id="escalaHonorario" >
+                <label class="form-check-label" for="escalaHonorario">Escala</label>
+              </div>
+            </div>
+              <div *ngIf="!EPhonorarios"  class="row d-flex justify-content-start">
+     
+            <div  class="input-group mb-3 col-4">
+                <span class="input-group-text" id="inputGroup-sizing-default">Honorarios</span>
+                <input type="text" class="form-control" formControlName="p_honorarios" aria-label="Sizing example input"   aria-describedby="inputGroup-sizing-default" value={{actoActual.p_honorarios}}>
+                <span class="input-group-text">%</span>
+            </div>  
+
+            <div *ngIf="!EPhonorarios" class="input-group mb-3 col-4">
+                <span class="input-group-text" id="inputGroup-sizing-default">Min. honorarios</span>
+                <input type="text" formControlName="min_honorarios" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value={{actoActual.min_honorarios}}>
+            </div>
+        </div>
+
+    
+        <div  class="row d-flex justify-content-start">
+
+        <div class="col-12">
+            <p class="mb-0">APORTES: </p>
+        </div>
+        <div class="form-check form-switch ml-3 col-12">
+            <input class="form-check-input {{EPaportes}}" formControlName="aporte_escala" [checked]="EPaportes" (click)="setPoseeEscalaAportes()" type="checkbox" id="flexSwitchCheckChecked">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Escala</label>
+          </div>
+          <div *ngIf="EPaportes" class="form-check form-check-inline  ml-3 col-12">
+            <input class="form-check-input" type="radio"[checked]="actoActual.p_aportes==-1" (click)="setEscalaCompleta()" name="inlineRadioOptions" id="inlineRadio1" >
+            <label class="form-check-label" for="inlineRadio1">Escala completa</label>
+          </div>
+          <div  *ngIf="EPaportes" class="form-check form-check-inline  ml-3 col-12">
+            <input class="form-check-input"  type="radio"[checked]="actoActual.p_aportes==-2" (click)="setMediaEscala()" name="inlineRadioOptions1" id="inlineRadio2" >
+            <label class="form-check-label" for="inlineRadio2">1/2 Escala</label>
+          </div>
+        </div>
+
+            <div  *ngIf="!EPaportes" class="row d-flex justify-content-start">
+                <div  class="input-group mb-3 col-4">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Aportes</span>
+                    <input type="text" class="form-control" formControlName="p_aporte" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-default" value={{actoActual.p_aportes}}>
+                    <span class="input-group-text">%</span>
+                </div>
+        
+                <div  class="input-group mb-3 col-4">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Min. aportes</span>
+                    <input type="text" class="form-control" formControlName="min_aporte" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-default" value={{actoActual.min_aportes}}>
+                </div>
+            </div>
+
+        </form>
+  </div>
+
+              
+
+</div>
+
+<div class="row d-flex justify-content-start {{this.actoActual.id}}" *ngIf="this.actoActual.id!=0">
+        <h6 class="col-12">Lista de actores del acto {{this.actoActual.nombre_acto}}</h6>
+        <div class="col-7 m-3">
+        <button type="button" class="btn btn-outline-success d-flex align-items-center"[routerLink]="['/nuevoActor',actoActual.id]">
+            <span class="material-icons pr-2">
+                add_box
+                </span>
+            Crear actor</button>
+    </div>
+    <div class="col-6 d-flex justify-content-start" >
+
+        <table class="table">
+            <tbody>
+              <tr *ngFor="let actor of actores">
+                <td *ngIf="actor.id_acto==actoActual.id">{{actor.nombre_actor}}</td>
+                <td *ngIf="actor.id_acto==actoActual.id">        
+                    <button type="button" id={{actor.id}} class="btn btn-outline-success"[routerLink]="['/actor', actor.id]">Editar</button>
+                    <button type="button" id={{actor.id}}  class="btn btn-outline-danger ml-4"> <span class="material-icons">
+                        delete
+                        </span></button>  
+                </td>
+              
+              </tr>
+           
+            </tbody>
+          </table>    
+    </div>
+
+    
+</div>
+
+<div class="col-4 mt-4 d-flex justify-content-start">
+    <button *ngIf="actoActual.id!=0" type="button" (click)="actualizarDatos()" class="btn btn-primary btn-lg ">Actualizar datos</button>
+  </div>

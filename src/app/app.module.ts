@@ -1,13 +1,60 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms'
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
+import { FormularioComponent } from './formulario/formulario.component';
+import { DatosViewComponent } from './datos-view/datos-view.component';
+import { FormularioEditComponent } from './formulario-edit/formulario-edit.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ConfiguracionActosComponent } from './configuracion-actos/configuracion-actos.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { ConfiguracionActorComponent } from './configuracion-actor/configuracion-actor.component';
+import { NuevocomponentComponent } from './nuevocomponent/nuevocomponent.component';
+import { EditActoComponent } from './edit-acto/edit-acto.component';
+import { CreateActoComponent } from './create-acto/create-acto.component';
+import { EscalaPorcentualComponent } from './escala-porcentual/escala-porcentual.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HelloComponent ],
-  bootstrap:    [ AppComponent ]
+  declarations: [
+    AppComponent,
+    FormularioComponent,
+    DatosViewComponent,
+    FormularioEditComponent,
+    ConfiguracionComponent,
+    ConfiguracionActosComponent,
+    ConfiguracionActorComponent,
+    NuevocomponentComponent,
+    EditActoComponent,
+    CreateActoComponent,
+    EscalaPorcentualComponent
+    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    MatStepperModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule
+
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
